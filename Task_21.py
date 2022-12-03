@@ -6,6 +6,8 @@
 # - список: ["йцу", "фыв", "ячс", "цук", "йцукен"], ищем: "йцу", ответ: -1
 # - список: ["123", "234", 123, "567"], ищем: "123", ответ: -1
 # - список: [], ищем: "123", ответ: -1
+
+
 print ('Для упрощения проверки просим выбрать один из вариантов:')
 Vibor = int(input('1 - Ввести список самому\n2 - Выбрать список из примера\n'))
 if Vibor == 1:
@@ -29,21 +31,49 @@ else:
     print('Такой вариант не предусмотрен попробуйте снова!')
 print (f'Вот наш список: {Spisok}')
 x = str(input('Что ищем браток?: '))
-count = 0
+# 1 вариант
+# count = 0
+# if x in Spisok:
+#     for i in range(len(Spisok)):
+#         if Spisok[i] == x:
+#             count += 1
+#             index = i
+#     if count == 2:
+#         print (f'Позиция второго вхождения = {index}')
+#         print (f'список: {Spisok}, ищем: "{x}", ответ: {index}')
+#     if count == 1:
+#         print (f'К сожалению данный элемент встречается всего ОДИН раз!!!')
+#         print (f'список: {Spisok}, ищем: "{x}", ответ: {-1}')  
+# else:
+#     print('Что-то ты не то набрал браток!')
+#     print (f'К сожалению такого элемента вообще НЕТ в списке!!!')
+#     print (f'список: {Spisok}, ищем: "{x}", ответ: {-1}')
 
-if x in Spisok:
-    for i in range(len(Spisok)):
-        if Spisok[i] == x:
-            count += 1
-            index = i
-    if count == 2:
-        print (f'Позиция второго вхождения = {index}')
-        print (f'список: {Spisok}, ищем: "{x}", ответ: {index}')
-    if count == 1:
-        print (f'К сожалению данный элемент встречается всего ОДИН раз!!!')
-        print (f'список: {Spisok}, ищем: "{x}", ответ: {-1}')  
-else:
-    print('Что-то ты не то набрал браток!')
-    print (f'К сожалению такого элемента вообще НЕТ в списке!!!')
-    print (f'список: {Spisok}, ищем: "{x}", ответ: {-1}')
 
+# 2 вариант
+# def Reshenue(Spisok, Poisk):
+#     index = 0
+#     count = 0
+#     for i in Spisok:
+#         if i == Poisk:
+#             count += 1
+#         if count == 2:
+#             index_2 = index
+#             break
+#         index += 1
+#     if count == 0 or count == 1:
+#         print(f'список: {Spisok:}: ищем: "{Poisk}", ответ: -1')
+#     if count == 2:
+#         print(f'список: {Spisok:}: ищем: "{Poisk}", ответ: {index_2}')
+
+# Reshenue(Spisok, x)
+# 3 вариант (Семинар)
+def Reshenue(Spisok, Poisk):
+    count = 0
+    for i in range (len (Spisok)):
+        if Spisok[i] == Poisk:
+            count +=1
+            if count == 2:
+                 return i
+    return -1
+print (f'список: {Spisok:}: ищем: "{x}", ответ: {Reshenue(Spisok, x)}')
